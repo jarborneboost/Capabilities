@@ -1,13 +1,17 @@
 {
-    "name": "pig-marketplace",
-    "description": "Pig's catalog of plugins and skills.",
-    "owner": {
-        "name": "Pig"
+  "name": "pig-marketplace",
+  "description": "Pig's catalog of plugins and skills.",
+  "owner": {
+    "name": "Pig"
+  },
+  "plugins": [
+    {
+      "name": "my-plugin-bundle",
+      "source": "./plugins/my-plugin-bundle"
     },
-    "plugins": [
-        {
-            "name": "my-plugin-bundle",
-            "source": "./plugins/my-plugin-bundle"
-        }
-    ]
+    {
+      "name": "heistwright",
+      "source": "./plugins/heistwright"
+    }
+  ]
 }
