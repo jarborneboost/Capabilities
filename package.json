@@ -1,0 +1,28 @@
+{
+  "name": "capabilities",
+  "version": "1.0.0",
+  "description": "A plugin bundle providing custom skills.",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "validate-marketplace": "claude plugin validate .",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
+  },
+  "author": "Pig",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.18.0",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.18.0",
+  "type": "module",
+  "devDependencies": {
+    "oxfmt": "0.78.0",
+    "oxlint": "1.93.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "my-plugin-bundle",
+  "version": "0.1.0",
+  "description": "A plugin bundle providing custom skills.",
+  "author": {
+    "name": "Pig"
+  }
+}

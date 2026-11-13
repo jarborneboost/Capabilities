@@ -1,0 +1,10 @@
+minimumReleaseAge: 4320
+blockExoticSubdeps: true
+trustPolicy: "no-downgrade"
+verifyStoreIntegrity: true
+strictDepBuilds: true
+allowBuilds:
+  # NOTE: The script is only a download fallback, so it's disabled. `strictDepBuilds` still requires the entry.
+  esbuild: false
+  # NOTE: Its postinstall installs the git hooks; false would silently skip them.
+  lefthook: true
