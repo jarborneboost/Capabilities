@@ -10,7 +10,7 @@ Headers are written in the output language, see [Language](#language).
 |---|---|
 | ID | `REQ-001`, `REQ-002`, … numbered in document order of the first `*` source, no gaps |
 | Original text | The source wording, verbatim. One line per source, see below |
-| Location | `Section <number> <heading>, page <n>`; add `, table <n>, row <n>` for table cells. One line per source in Original text, same order |
+| Location | `Section <number> <heading>, page <n>`; add `, table <n>, row <n>` for table cells. One line per source in Original text, same order. The annotation script links the cell to the first `*` source in the annotated document |
 | ISTQB issues | One line per failed criterion: `<Criterion>: <what is wrong> – <why it matters for testing>`; `None` if all pass |
 | Rewritten requirement | One clear, testable sentence; unknown values written as `[TBD]` |
 | Testability | `OK`, `MANAGEABLE` or `BLOCKING` |
@@ -24,6 +24,13 @@ A requirement has one row, however many places state or qualify it. Each source 
 - `- ` starts a qualifier: a definition, general constraint, exception, appendix, or information from a link (fetched or provided by the user; the URL is its location).
 
 List `*` lines first, then `-` lines, each group in document order. With a single source, write the quote without a marker. The rewritten requirement may only use information from the cited sources.
+
+### Verbatim quotes
+
+The annotation script finds each quote in the document by its text, so a quote must be a copy of the document text: no paraphrasing, no corrected typos, no added words.
+- **Table row:** the cell values in column order, separated by ` | `, an empty cell as nothing between two separators: `"Purring | 14 | 38,00 |  | 100,00 | 14"`. Do not add column names or placeholders such as `(empty)`; the meaning of the columns belongs in the rewritten requirement.
+- **Lists:** quote the item texts in order; bullet and numbering characters may be left out.
+- **Omissions:** `...` may skip text inside one passage; quote the parts around it verbatim.
 
 ### Same obligation in several places
 
@@ -80,7 +87,7 @@ The rows below only illustrate the format. Their content is invented; do not cop
 | Column | Value |
 |---|---|
 | ID | REQ-012 |
-| Original text | * "Users must confirm their email address before first login."<br>* "Email confirmation: required before first login" |
+| Original text | * "Users must confirm their email address before first login."<br>* "Email confirmation | required before first login" |
 | Location | * Section 3.1 Registration, page 7<br>* Section 5 Summary of rules, page 18, table 2, row 4 |
 | ISTQB issues | None |
 | Rewritten requirement | A new user shall confirm their email address before they can log in for the first time. |

@@ -2,7 +2,7 @@
 
 ## ✨ feature
 
-- [ ] annoted word document with links to input document (word/pdf -> word)
+- [x] annoted word document with links to input document
 - [ ] grouping of requirements
 - [ ] be able to handle multiple input documents (how to split, how to group?)
 - [ ] also have our stack (per tenant) in mind when creating requirements

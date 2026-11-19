@@ -19,7 +19,9 @@ Requirements are rarely stated in one place: definitions, general constraints an
 6. **Extract.** Every paragraph, list item and table row that states an obligation becomes a requirement; split compound statements into one requirement each. When the same obligation is stated in several places (e.g. a paragraph and a table row), write one requirement and cite every passage as a `*` source; only merge when the meaning is identical, see [output-format.md](references/output-format.md). When a requirement depends on context from step 1 or on a link source, cite it as a `-` source.
 7. **Assess.** For each requirement apply the three checks below and write a rewritten requirement.
 8. **Compare.** Check all requirements against each other for contradictions and record them under *Consistent*.
-9. **Write** the Excel file, then run the final check.
+9. **Write** the Excel file.
+10. **Annotate.** Run `uv run scripts/annotate.py "<source document>" "<Excel file>"` from this skill's directory (source must be `.pdf` or `.docx`). It writes `<document name> - Annotated.<pdf|docx>` next to the Excel file, with every source highlighted and commented with its requirement ID, and links each Location cell to it. For every source it lists as *not found*, *approximate* or *ambiguous*: find the passage again, make the quote verbatim (see [output-format.md](references/output-format.md)) and run the script again. A source that cannot be quoted from the document text (e.g. an image, or a review comment in a Word document) stays unmatched: tell the user which ones. If `uv` is missing, ask the user to install it (https://docs.astral.sh/uv/).
+11. Run the final check.
 
 ## The three checks
 
@@ -29,7 +31,7 @@ Requirements are rarely stated in one place: definitions, general constraints an
 
 ## Output
 
-Write `<document name> - Requirements.xlsx` with the columns, source format, language rule (including the translation table) and examples in [output-format.md](references/output-format.md). Read it before writing the file.
+Write `<document name> - Requirements.xlsx` with the columns, source format, language rule (including the translation table) and examples in [output-format.md](references/output-format.md). Read it before writing the file. The annotation step adds `<document name> - Annotated.<pdf|docx>`; both files must stay in the same folder for the links to work.
 
 ## Final check
 
@@ -40,4 +42,5 @@ Done when:
 - every contradiction names both requirement IDs;
 - every link has a user decision and no link was opened without one;
 - column headers and cell values (except IDs and original text) are in the language the user chose, using the translation table;
-- IDs run without gaps in document order.
+- IDs run without gaps in document order;
+- the annotation script reports no unmatched sources, except the ones you told the user about.
