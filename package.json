@@ -12,6 +12,7 @@
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
+    "test": "uv run --project tests pytest tests",
     "todo": "pnpm tospudo"
   },
   "devDependencies": {

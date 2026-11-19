@@ -1,0 +1,20 @@
+# Tests for the scripts bundled in the plugins. Not shipped: the marketplace only ships `plugins/`.
+# Run from the repo root: `pnpm test` (or `uv run --project tests pytest tests`).
+[project]
+name = "capabilities-tests"
+version = "0"
+requires-python = ">=3.11"
+# Keep the script libraries in sync with the inline `# /// script` header of each script;
+# test_dependencies.py fails when they drift apart.
+dependencies = [
+    "pytest>=8",
+    "pymupdf>=1.24",
+    "python-docx>=1.2",
+    "openpyxl>=3.1",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"

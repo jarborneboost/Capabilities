@@ -2,7 +2,6 @@
 
 ## ✨ feature
 
-- [x] annoted word document with links to input document
 - [ ] grouping of requirements
 - [ ] be able to handle multiple input documents (how to split, how to group?)
 - [ ] also have our stack (per tenant) in mind when creating requirements
@@ -11,4 +10,8 @@
 
 ## 🐛 fix
 
-- [ ] add back the progress messages (use only for the longest step)
+- [ ] improve time estimate, for 30 pages it takes:
+  - Reading the PDF, finding links, your two questions: ~3–4 min
+  - Extracting and assessing requirements: ~10–11 min
+  - Building the Excel, annotating, fixing quotes ~2 min
+  - Checking contradictions, final build, delivery ~1 min

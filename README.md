@@ -38,6 +38,16 @@ Publishing means pushing to the default branch (`main`). Users that have added t
 2. The version in `package.json` does not follow the version in `plugin.json` (we only use that for internal tooling)
 3. Commit and push to `main`.
 
+## Tests
+
+Scripts bundled in skills are tested in `tests/`, outside `plugins/` so the tests are not shipped with the plugins.
+
+Requires [uv](https://docs.astral.sh/uv/).
+
+```console
+pnpm test
+```
+
 ## Docs
 
 - [Agent Skills (overview)](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
