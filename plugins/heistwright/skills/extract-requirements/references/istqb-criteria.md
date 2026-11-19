@@ -2,7 +2,7 @@
 
 ## ISTQB quality criteria
 
-Assess every requirement against all eight criteria. For each criterion it fails, name the criterion, what is wrong, and why it matters for testing.
+Assess every requirement against all eight criteria. In the Excel file, criterion names and testability values appear in the output language (translation table in [output-format.md](output-format.md#language)). For each criterion it fails, name the criterion, what is wrong, and why it matters for testing.
 
 | Criterion | Fails when |
 |---|---|
@@ -21,7 +21,7 @@ Clients often state the missing piece elsewhere: a definition in a glossary, a g
 
 Before you flag **Complete**, **Unambiguous** or **Verifiable**:
 1. Search the whole document for the missing actor, value, definition, trigger or outcome.
-2. If found, use it: cite it as an `Also:` source and do not flag the criterion.
+2. If found, use it: cite it as a qualifier source (a `-` line, see [output-format.md](output-format.md#sources)) and do not flag the criterion.
 3. If not found anywhere, flag it and say that the document does not state it.
 
 ### Consistency pass
@@ -30,7 +30,7 @@ Check **Consistent** only after all requirements are extracted. Compare requirem
 
 ## Testability
 
-Rate whether a tester can write a pass/fail test from the requirement as written, including any `Also:` sources:
+Rate whether a tester can write a pass/fail test from the requirement as written, including any qualifier sources (the `-` lines, see [output-format.md](output-format.md#sources)):
 
 - **OK** – testable as written.
 - **MANAGEABLE** – the basic success case is testable; limits, edge cases or error handling are unclear.
