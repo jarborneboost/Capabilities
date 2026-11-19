@@ -1,53 +1,34 @@
 ---
 name: extract-requirements
-description: Turn a client document into a reviewed list of requirements. Only use when called with `/extract-requirements`.
+description: Turn a client document into a reviewed list of requirements in an Excel file, assessed for traceability, ISTQB quality and testability. Only use when called with `/extract-requirements`.
 ---
 
 # Requirements from client documents
 
+Requirements are rarely stated in one place: definitions, general constraints and exceptions sit elsewhere in the document. Read for those connections, otherwise requirements are rewritten wrongly and flagged for gaps the client already filled.
+
 ## Steps
 
-1. Read the whole document. Every paragraph, list item and table row that states an obligation becomes a requirement; split compound statements into one requirement each.
-2. For each requirement, fill in the three checks below.
-3. Present the result as one table, one row per requirement, in document order.
-
-Done when every obligation in the document has a row and every row has all three checks filled in.
+1. **Collect context.** Read the whole document first. Note definitions and glossary entries, general or global constraints, cross-references ("see section 4"), exceptions, appendices and any priority scheme.
+2. **Extract.** Every paragraph, list item and table row that states an obligation becomes a requirement; split compound statements into one requirement each. When a requirement depends on context from step 1, cite it as well.
+3. **Assess.** For each requirement apply the three checks below and write a rewritten requirement.
+4. **Compare.** Check all requirements against each other for contradictions and record them under *Consistent*.
+5. **Write** the Excel file, then run the final check.
 
 ## The three checks
 
-**Traceability** – Quote the original wording verbatim and give its exact location (section, page, table and row), so anyone can check the requirement against the source.
+- **Traceability** – Quote the original wording verbatim and give its exact location (section, page, table and row), for every source the requirement depends on. See [output-format.md](references/output-format.md).
+- **ISTQB quality** – Assess against the eight criteria. Search the rest of the document before flagging missing information. Read [istqb-criteria.md](references/istqb-criteria.md) before assessing.
+- **Testability** – Rate `OK`, `MANAGEABLE` or `BLOCKING` (definitions in [istqb-criteria.md](references/istqb-criteria.md)).
 
-**ISTQB quality** – Assess the requirement against complete, consistent, correct, feasible, necessary, prioritised, unambiguous and verifiable. For each criterion it fails, name the criterion, what is wrong, and why it matters for testing.
+## Output
 
-| Criterion | Fails when |
-|---|---|
-| **Complete** | Necessary information is absent: actor, object, constraint, data format, trigger or outcome |
-| **Consistent** | It contradicts another requirement in the same document |
-| **Correct** | It does not accurately reflect the client's need |
-| **Feasible** | It cannot realistically be implemented or tested |
-| **Necessary** | It is gold-plating or clearly out of scope |
-| **Prioritised** | Relative importance matters but is completely absent |
-| **Unambiguous** | More than one interpretation is possible |
-| **Verifiable** | A pass/fail test cannot be defined without further clarification |
+Write `<document name> - Requirements.xlsx` with the columns, multi-source format, language rule and example in [output-format.md](references/output-format.md). Read it before writing the file.
 
+## Final check
 
-**Testability** – Rate whether a tester can write a pass/fail test from the requirement as written:
-- **OK** – testable as written.
-- **MANAGEABLE** – the basic success case is testable; limits, edge cases or error handling are unclear.
-- **BLOCKING** – no pass/fail test is possible until the client clarifies it.
-
-## Table columns
-
-ID · Original text · Location · ISTQB issues · Testability · Rewritten requirement
-
-Write `<document name> - Requirements.xlsx`, one sheet, one row per requirement, in document order:
-
-| Column | Content |
-|---|---|
-| ID | `REQ-001`, `REQ-002`, … numbered in document order, no gaps |
-| Original text | The source wording, verbatim |
-| Location | `Section <number> <heading>, page <n>`; add `, table <n>, row <n>` for table cells |
-| ISTQB issues | One line per failed criterion: `<Criterion>: <what is wrong> – <why it matters for testing>`; `None` if all pass |
-| Testability | `OK`, `MANAGEABLE` or `BLOCKING` |
-| Testability reason | What is missing; empty for `OK` |
-| Rewritten requirement | One clear, testable sentence; unknown values written as `[TBD]` |
+Done when:
+- every obligation in the document has its own row, including obligations in tables, lists and appendices;
+- every qualifier found elsewhere in the document is cited;
+- every contradiction names both requirement IDs;
+- IDs run without gaps in document order.
